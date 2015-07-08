@@ -31,7 +31,7 @@ function wp_install_defaults( $user_id )
     global $wpdb, $wp_rewrite, $current_site, $table_prefix;
 
     // Fix upload directory location.
-    update_option( 'upload_path', untrailingslashit( str_replace( 'core', 'lib\uploads', ABSPATH ) ) );
+    update_option( 'upload_path', untrailingslashit( str_replace( 'core', 'lib/uploads', ABSPATH ) ) );
     update_option( 'upload_url_path', home_url( '/lib/uploads' ) );
     
 }
