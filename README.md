@@ -195,6 +195,8 @@ Complete Setup
         cd `git config --get core.worktree` || exit
         echo " - Pulling origin"
         git pull origin
+        echo " - Fetch commits and tags for each submodule"
+        git submodule foreach git fetch --tags
         echo " - Updating submodules"
         git submodule update --init --recursive --force
 		
