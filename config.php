@@ -21,7 +21,12 @@
 // =================================================================================
 // Define the type of server and load database info and local development parameters
 // =================================================================================
-if ($_SERVER['REMOTE_ADDR']=='127.0.0.1') {
+
+$remote =   $_SERVER['REMOTE_ADDR'];    // this server's address.
+$local  =   '127.0.0.1';                // your local machine, in case you develop on it.
+$dev    =   '192.168.1.20';             // your dev machine, in case it's not $local
+
+if ( $remote == $local || $remote == $dev ) {
     define('WP_ENV', 'dev');
 } else {
     define('WP_ENV', 'prod');
@@ -42,6 +47,10 @@ if (WP_ENV == 'dev') {
     define('DB_USER', 'username');                                                      // DB_USER
     define('DB_PASSWORD', 'password');                                                  // DB_PASSWORD
     define('DB_HOST', 'localhost');                                                     // DB_HOST
+    
+    define('AUTOMATIC_UPDATER_DISABLED', true );                                        // disable automatic updates on production server.
+    define('DISALLOW_FILE_MODS', true );                                                // disable the file editor, automatic updates, and installing plugins/themes from within WP on production server.
+
 
 }
 
@@ -58,8 +67,6 @@ define('WP_CONTENT_DIR', dirname(__FILE__) . '/public_html/lib' );              
 define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/lib');                 // move the wp-content directory outside of the WordPress application directory.
 
 define('DISALLOW_FILE_EDIT', true );                                                    // disable the file editor.
-define('AUTOMATIC_UPDATER_DISABLED', true );                                            // disable automatic updates.
-define('DISALLOW_FILE_MODS', true );                                                    // disable the file editor, automatic updates, and installing plugins/themes from within WP.
 define('WP_POST_REVISIONS', false );                                                    // disable post revisions.
 
 if ( WP_DEBUG ) {
