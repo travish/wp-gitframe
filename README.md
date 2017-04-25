@@ -329,9 +329,9 @@ Now we can start adding our submodules. (The force parameter is necessary if you
     [root@dev:/var/www/html/website.dev#] git submodule add --force git://github.com/WordPress/WordPress.git public_html/core
     [root@dev:/var/www/html/website.dev#] git commit -m "Added WordPress submodule."
     [root@dev:/var/www/html/website.dev#] cd public_html/core
-    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout --no-track -b branch_4.1.1 4.1.1
+    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.7.4
     [root@dev:/var/www/html/website.dev/public_html/core#] cd ../../
-    [root@dev:/var/www/html/website.dev#] git commit -am "Checkout WordPress 4.1.1."
+    [root@dev:/var/www/html/website.dev#] git commit -am "Checkout WordPress 4.7.4"
     
 Current Directory Structure (development):
 
@@ -560,3 +560,17 @@ Current Directory Structure (development):
 ## 9. Install WordPress
 
 You can now navigate to your webroot and install WordPress. If you haven't already, push to origin.
+
+## 10. Updating Submodules
+
+To update submodules, execute the following:
+
+    [root@dev:/var/www/html/website.dev#] cd public_html/core
+    [root@dev:/var/www/html/website.dev/public_html/core#] git fetch --tags
+    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.7.4
+    [root@dev:/var/www/html/website.dev/public_html/core#] cd ../../
+    [root@dev:/var/www/html/website.dev#] git add public_html/core
+    [root@dev:/var/www/html/website.dev#] git commit -am "Updated WordPress from 4.7.3 to 4.7.4"
+    [root@dev:/var/www/html/website.dev#] git push origin --all
+
+    All in One: cd public_html/core && git fetch --tags && git checkout 4.7.4 && cd ../../ && git add public_html && git commit -am "Updated WordPress from 4.7.3 to 4.7.4" && git push origin --all
