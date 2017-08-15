@@ -15,9 +15,9 @@ You're probably asking yourself, what are the benefits of such a seemingly compl
 
 - Repository (bare): `[root@host:/var/www/repo/website.git#]`
 - Website (production): `[root@host:/var/www/html/website.com#]`
-    - **IMPORTANT!** This requires you have a website set up on `production` with the root directory (where files are served from) in `/var/www/html/website.com/public_html`.
+    - **IMPORTANT!** This requires you have a website/hosts file set up on `production` with the root directory (where files are served from) in `/var/www/html/website.com/public_html`.
 - Website (development): `[root@dev:/var/www/html/website.dev#]`
-    - **IMPORTANT!** This requires you have a website set up on `development` with the root directory (where files are served from) in `/var/www/html/website.dev/public_html`.
+    - **IMPORTANT!** This requires you have a website/hosts file set up on `development` with the root directory (where files are served from) in `/var/www/html/website.dev/public_html`.
 
 #### Example VirtualHost
 
@@ -206,7 +206,7 @@ Complete Setup
     
 To save and exit, execute: `Crtl-X, Y, Enter`
 
-**b. Make the post-reveive hook executable:**
+**b. Make the post-receive hook executable:**
 
 `[root@host:/var/repo/website.git/hooks#] chmod +x post-receive`
 
@@ -329,9 +329,9 @@ Now we can start adding our submodules. (The force parameter is necessary if you
     [root@dev:/var/www/html/website.dev#] git submodule add --force git://github.com/WordPress/WordPress.git public_html/core
     [root@dev:/var/www/html/website.dev#] git commit -m "Added WordPress submodule."
     [root@dev:/var/www/html/website.dev#] cd public_html/core
-    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.7.5
+    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.8.1
     [root@dev:/var/www/html/website.dev/public_html/core#] cd ../../
-    [root@dev:/var/www/html/website.dev#] git commit -am "Checkout WordPress 4.7.5"
+    [root@dev:/var/www/html/website.dev#] git commit -am "Checkout WordPress 4.8.1"
     
 Current Directory Structure (development):
 
@@ -388,7 +388,7 @@ Current Directory Structure (development):
 
 At this point, we need to edit some files. In particular, we're going to separate our wp-config.php files for version control.
 
-In `public_html/index.php`, modify: `require('./wp-blog-header.php');` to include the wordpress directory: `require('./core/wp-blog-header.php');`
+In `public_html/index.php`, modify: `require('./wp-blog-header.php');` to include the WordPress directory: `require('./core/wp-blog-header.php');`
 
 We're going to replace `wp-config.php` with:
 
@@ -563,14 +563,14 @@ You can now navigate to your webroot and install WordPress. If you haven't alrea
 
 ## 10. Updating Submodules
 
-To update submodules, execute the following:
+To update the WordPress submodule, execute the following:
 
     [root@dev:/var/www/html/website.dev#] cd public_html/core
     [root@dev:/var/www/html/website.dev/public_html/core#] git fetch --tags
-    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.7.5
+    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.8.1
     [root@dev:/var/www/html/website.dev/public_html/core#] cd ../../
     [root@dev:/var/www/html/website.dev#] git add public_html/core
-    [root@dev:/var/www/html/website.dev#] git commit -am "Updated WordPress from 4.7.3 to 4.7.5"
+    [root@dev:/var/www/html/website.dev#] git commit -am "Updated WordPress from 4.7.5 to 4.8.1"
     [root@dev:/var/www/html/website.dev#] git push origin --all
 
-    All in One: cd public_html/core && git fetch --tags && git checkout 4.7.5 && cd ../../ && git add public_html/core && git commit -am "Updated WordPress from 4.7.4 to 4.7.5" && git push origin --all
+    All in One: cd public_html/core && git fetch --tags && git checkout 4.8.1 && cd ../../ && git add public_html/core && git commit -am "Updated WordPress from 4.7.5 to 4.8.1" && git push origin --all
