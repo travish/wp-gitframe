@@ -329,9 +329,9 @@ Now we can start adding our submodules. (The force parameter is necessary if you
     [root@dev:/var/www/html/website.dev#] git submodule add --force git://github.com/WordPress/WordPress.git public_html/core
     [root@dev:/var/www/html/website.dev#] git commit -m "Added WordPress submodule."
     [root@dev:/var/www/html/website.dev#] cd public_html/core
-    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.8.1
+    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.9.4
     [root@dev:/var/www/html/website.dev/public_html/core#] cd ../../
-    [root@dev:/var/www/html/website.dev#] git commit -am "Checkout WordPress 4.8.1"
+    [root@dev:/var/www/html/website.dev#] git commit -am "Checkout WordPress 4.9.4"
     
 Current Directory Structure (development):
 
@@ -567,10 +567,10 @@ To update the WordPress submodule, execute the following:
 
     [root@dev:/var/www/html/website.dev#] cd public_html/core
     [root@dev:/var/www/html/website.dev/public_html/core#] git fetch --tags
-    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.8.1
+    [root@dev:/var/www/html/website.dev/public_html/core#] git checkout 4.9.4
     [root@dev:/var/www/html/website.dev/public_html/core#] cd ../../
     [root@dev:/var/www/html/website.dev#] git add public_html/core
-    [root@dev:/var/www/html/website.dev#] git commit -am "Updated WordPress from 4.7.5 to 4.8.1"
+    [root@dev:/var/www/html/website.dev#] git commit -am "Updated WordPress from 4.8.1 to 4.9.4"
     [root@dev:/var/www/html/website.dev#] git push origin --all
 
-    All in One: cd public_html/core && git fetch --tags && git checkout 4.8.1 && cd ../../ && git add public_html/core && git commit -am "Updated WordPress from 4.7.5 to 4.8.1" && git push origin --all
+    All in One: cd public_html/core && git fetch --tags && git checkout 4.9.4 && cd ../../ && git add public_html/core && git commit -am "Updated WordPress from 4.8.1 to 4.9.4" && git push origin --all
